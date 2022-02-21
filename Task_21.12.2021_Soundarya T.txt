@@ -1,0 +1,23 @@
+ $user_input=""
+while($user_input -ne "exit"){ 
+$user_input=read-host " Name `n Lastname `n Email `n Password `n Enter the Choice which you want to change"
+#to change a name
+if($user_input -eq "Name")
+{$username=read-host "enter the username"
+$name=read-host "enter the Name" 
+Set-ADUser -Identity $username -GivenName $name}
+#to change a last name
+if($user_input -eq "lastname")
+{$username=read-host "enter the username"
+$name=read-host "enter the lastname"
+Set-ADUser -Identity $username -Surname $name}
+#to change the email
+if($user_input -eq "Email")
+{$username=read-host "enter the username"
+$name=read-host "enter the Email"
+Set-ADUser -Identity $username -EmailAddress $name}
+#to change the password
+if($user_input -eq "password")
+{$username=read-host "enter the username"
+$password=read-host "enter the password" -AsSecureString
+Set-ADAccountPassword -Identity $Username -NewPassword $Password -Reset} }

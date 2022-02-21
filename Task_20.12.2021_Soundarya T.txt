@@ -1,0 +1,9 @@
+ $ServerListFile = "C:\Users\Administrator.DEMO\Desktop\serverslist.txt"   
+$servers = Get-Content -Path $ServerListFile -ErrorAction SilentlyContinue 
+  foreach($server in $servers) 
+{ 
+$process=Invoke-Command -ScriptBlock { get-process|sort-object CPU -descending |select-object -first 10 } -ComputerName $server 
+$process 
+$process|out-file ".\desktop\process1.txt" -append -force 
+$process|Export-Csv ".\desktop\process4.csv" -append -force  
+ }  
